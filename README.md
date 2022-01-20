@@ -1,4 +1,6 @@
-# CustomUrlGeneratorClient
+# Custom Url Generator Client
+
+[Figma Mockup](https://www.figma.com/proto/J0LGjWKWmuGhZCweI9BOfP/Figma-Website-Template---Demo-(Community)?node-id=420%3A861&scaling=min-zoom&page-id=0%3A88&starting-point-node-id=104%3A16854)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.11.
 
