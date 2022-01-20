@@ -1,0 +1,16 @@
+@import '../../../../styles.scss';
+
+.navbar-nav {
+    .nav-item {        
+        .nav-link {
+            font-weight: $font-weight-normal;
+            color: $primary-color;
+            font-size: $font-size-normal;
+        }
+
+        .active {
+            font-weight: $font-weight-bold;
+            text-shadow: 1px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+    }
+}
