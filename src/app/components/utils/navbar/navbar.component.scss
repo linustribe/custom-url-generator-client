@@ -1,15 +1,15 @@
+@import '../../../../styles.scss';
+
 .navbar-nav {
-    .nav-item {
-        padding: 0px 8px;
-    
+    .nav-item {        
         .nav-link {
-            color: #505F98;
-            font-size: 18px;
-            font-weight: 400;
+            font-weight: $font-weight-normal;
+            color: $primary-color;
+            font-size: $font-size-normal;
         }
 
         .active {
-            font-weight: 500;
+            font-weight: $font-weight-bold;
             text-shadow: 1px 4px 4px rgba(0, 0, 0, 0.25);
         }
     }
