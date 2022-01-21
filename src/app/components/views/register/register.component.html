@@ -48,19 +48,19 @@
             <div *ngIf="password.errors.required">Password is required</div>
             <div *ngIf="!password.errors.required">
               <div *ngIf="password.value.length < 8">
-                Password should have minimum 8 characters
+                Password must have minimum 8 characters
               </div>
               <div *ngIf="password.value.length > 30">
-                Password should have maximum 30 characters
+                Password must have maximum 30 characters
               </div>
-              <div *ngIf="!passwordStrength.lower.exec(password.value)">
-                Password must have a-z characters
+              <div *ngIf="!passwordValidator.lower.exec(password.value)">
+                Password must have at least one lower case a-z character
               </div>
-              <div *ngIf="!passwordStrength.upper.exec(password.value)">
-                Password must have A-Z characters
+              <div *ngIf="!passwordValidator.upper.exec(password.value)">
+                Password must have at least one upper case A-Z character
               </div>
-              <div *ngIf="!passwordStrength.digit.exec(password.value)">
-                Password must have 0-9 characters
+              <div *ngIf="!passwordValidator.digit.exec(password.value)">
+                Password must have at least one digit 0-9
               </div>
             </div>
           </div>
@@ -106,7 +106,9 @@
           <button type="submit" class="btn btn-primary w-100">Resgister</button>
         </div>
       </form>
-      <div class="text-center">Already have an account? <a href="login">Login</a></div>
+      <div class="text-center">
+        Already have an account? <a href="login">Login</a>
+      </div>
     </div>
   </div>
   <div class="col-sm-1 col-md-2 col-xl-3"></div>

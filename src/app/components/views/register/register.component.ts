@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
   confirmPasswordType: string = 'password';
   submitted: boolean = false;
   isValid: boolean = false;
-  passwordStrength = {
+  passwordValidator = {
     lower: new RegExp('.*[a-z].*'),
     upper: new RegExp('.*[A-Z].*'),
     digit: new RegExp('.*[0-9].*')
