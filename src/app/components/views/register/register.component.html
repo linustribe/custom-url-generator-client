@@ -46,8 +46,22 @@
           />
           <div *ngIf="submitted && password.errors" class="text-danger">
             <div *ngIf="password.errors.required">Password is required</div>
-            <div *ngIf="password.errors.minlength && !password.errors.required">
-              Password should be minimum 6 characters
+            <div *ngIf="!password.errors.required">
+              <div *ngIf="password.value.length < 8">
+                Password should have minimum 8 characters
+              </div>
+              <div *ngIf="password.value.length > 30">
+                Password should have maximum 30 characters
+              </div>
+              <div *ngIf="!passwordStrength.lower.exec(password.value)">
+                Password must have a-z characters
+              </div>
+              <div *ngIf="!passwordStrength.upper.exec(password.value)">
+                Password must have A-Z characters
+              </div>
+              <div *ngIf="!passwordStrength.digit.exec(password.value)">
+                Password must have 0-9 characters
+              </div>
             </div>
           </div>
         </div>

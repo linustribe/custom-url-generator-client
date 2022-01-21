@@ -16,13 +16,18 @@ export class RegisterComponent implements OnInit {
   confirmPasswordType: string = 'password';
   submitted: boolean = false;
   isValid: boolean = false;
+  passwordStrength = {
+    lower: new RegExp('.*[a-z].*'),
+    upper: new RegExp('.*[A-Z].*'),
+    digit: new RegExp('.*[0-9].*')
+  }
 
   constructor(private formBuild:FormBuilder, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.registerForm = this.formBuild.group({
       email: ['', [Validators.required, Validators.email, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, Validators.pattern('(?=\\D*\\d)(?=[^a-z]*[a-z])(?=[^A-Z]*[A-Z])(?=[^0-9]*[0-9]).{8,30}')]],
       confirmPassword: ['', [Validators.required]]
     })
   }
