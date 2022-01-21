@@ -34,11 +34,7 @@ export class LoginComponent implements OnInit {
 
 
   toggleShowPassword() {
-    if(this.passwordType === 'password') {
-      this.passwordType = 'text'
-    } else {
-      this.passwordType = 'password'
-    }
+    this.passwordType = this.showPassword ? 'password': 'text'
     this.showPassword = !this.showPassword;
   }
 
@@ -53,7 +49,6 @@ export class LoginComponent implements OnInit {
   submitForm() {
     this.submitted = true;
     if(!this.loginForm.invalid) {
-      console.log(this.loginForm.value)
     }
   }
 }

@@ -11,11 +11,11 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup = new FormGroup({});
   showPassword: boolean = false;
-  passwordType: string = 'password';
   showConfirmPassword: boolean = false;
+  passwordType: string = 'password';
   confirmPasswordType: string = 'password';
   submitted: boolean = false;
-  notMatched: boolean = false;
+  isValid: boolean = false;
 
   constructor(private formBuild:FormBuilder, private authService: AuthService, private router: Router) { }
 
@@ -39,28 +39,17 @@ export class RegisterComponent implements OnInit {
   }
 
   checkConfirmPassword(): void {
-    if(this.password.value == this.confirmPassword.value)
-      this.notMatched = false;
-    else
-      this.notMatched = true
+    this.isValid = this.password.value === this.confirmPassword.value;
   }
 
 
   toggleShowPassword(): void {
-    if(this.passwordType === 'password') {
-      this.passwordType = 'text'
-    } else {
-      this.passwordType = 'password'
-    }
+    this.passwordType = this.showPassword ? 'password': 'text'
     this.showPassword = !this.showPassword;
   }
   
   toggleShowConfirmPassword(): void {
-    if(this.confirmPasswordType === 'password') {
-      this.confirmPasswordType = 'text'
-    } else {
-      this.confirmPasswordType = 'password'
-    }
+    this.confirmPasswordType = this.showConfirmPassword ? 'password': 'text'
     this.showConfirmPassword = !this.showConfirmPassword;
   }
   
@@ -68,9 +57,8 @@ export class RegisterComponent implements OnInit {
     this.submitted = true;
     if(!this.registerForm.invalid) {
       if(this.password.value != this.confirmPassword.value) {
-        this.notMatched = true
+        this.isValid = false
       } else {
-        console.log(this.registerForm.value)
       }
     }
   }

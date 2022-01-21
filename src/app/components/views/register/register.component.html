@@ -82,7 +82,7 @@
                 Confirm password is required
               </div>
             </div>
-            <div *ngIf="!confirmPassword.errors && notMatched">
+            <div *ngIf="!confirmPassword.errors && !isValid">
               Passwords are not matched
             </div>
           </div>
