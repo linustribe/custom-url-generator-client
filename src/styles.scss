@@ -12,3 +12,7 @@ $font-size-normal: 18px;
 /* font weight */
 $font-weight-normal:          400 !default;
 $font-weight-bold:            500 !default;
+
+* {
+    font-family: $font-family;
+    }
