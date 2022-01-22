@@ -40,7 +40,9 @@ export class LoginComponent implements OnInit {
 
   forgotPassword() {
     if(this.email.valid) {
-      this.message = "Password reset link send"
+      this.authService.forgotPassword(this.email.value).subscribe(res => {
+        this.message = res.message
+      })
     } else {
       this.message = "Please enter valid email address"
     }
