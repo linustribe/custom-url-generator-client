@@ -49,6 +49,9 @@ export class LoginComponent implements OnInit {
   submitForm() {
     this.submitted = true;
     if(!this.loginForm.invalid) {
+      this.authService.login(this.email.value, this.password.value).subscribe(res => {
+        res.status === "ok" ? this.router.navigateByUrl('') : alert(res.message)
+      })
     }
   }
 }
