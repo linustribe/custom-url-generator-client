@@ -18,10 +18,10 @@ export class AuthService {
       if (user) {
         this.userData = new User(user as IUser);
         localStorage.setItem('user', JSON.stringify(this.userData));
-        JSON.parse(localStorage.getItem('user') || '{}');
+        JSON.parse(localStorage.getItem('user') || 'null');
       } else {
-        localStorage.setItem('user', null || '{}');
-        JSON.parse(localStorage.getItem('user') || '{}');
+        localStorage.setItem('user', 'null');
+        JSON.parse(localStorage.getItem('user') || 'null');
       }
     })
   }
@@ -43,7 +43,7 @@ export class AuthService {
 
   async sendVerficationMail() {
     return (await this.afAuth.currentUser)?.sendEmailVerification().then(() => {
-      alert("Sent Verification")
+      alert("Email verification mail sent, check your inbox")
     }) 
   }
 
@@ -51,7 +51,7 @@ export class AuthService {
     return new Observable<any>((sub) => {
       this.afAuth.signInWithEmailAndPassword(email, password).then((res) => {
         if(res.user?.emailVerified !== true) {
-          sub.next({status: "error", message: "Email not verified"})
+          sub.next({status: "error", message: "Check your email not verified"})
         } else {
           this.setUserData(res.user as IUser)
           sub.next({status: "ok", message: "Successfully Logged in"})
@@ -74,8 +74,8 @@ export class AuthService {
   }
 
   get isLoggedIn(): boolean {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
-    return (JSON.stringify(user) !== '{}' && user.emailVerified !== false) ? true : false;  
+    const user = JSON.parse(localStorage.getItem('user') || 'null');
+    return (user !== null && user.emailVerified !== false) ? true : false;  
   }
 
   setUserData(user: IUser) {
