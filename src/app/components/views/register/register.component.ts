@@ -64,6 +64,9 @@ export class RegisterComponent implements OnInit {
       if(this.password.value != this.confirmPassword.value) {
         this.isValid = false
       } else {
+        this.authService.register(this.email.value, this.password.value).subscribe(res => {
+          res.status === "ok" ? this.router.navigateByUrl('login') : alert(res.message)
+        })
       }
     }
   }
