@@ -10,17 +10,20 @@
         <li class="nav-item px-2">
           <a class="nav-link" routerLink="home" routerLinkActive="active">Home</a>
         </li>
-        <li class="nav-item px-2">
+        <li class="nav-item px-2" *ngIf="!authService.isLoggedIn">
           <a class="nav-link" routerLink="login" routerLinkActive="active">Login</a>
         </li>
-        <li class="nav-item px-2">
+        <li class="nav-item px-2" *ngIf="!authService.isLoggedIn">
           <a class="nav-link" routerLink="register" routerLinkActive="active">Register</a>
         </li>
-        <li class="nav-item px-2">
+        <li class="nav-item px-2" *ngIf="authService.isLoggedIn">
           <a class="nav-link" routerLink="my-account" routerLinkActive="active">My Account</a>
         </li>
-        <li class="nav-item px-2">
+        <li class="nav-item px-2" *ngIf="authService.isLoggedIn">
           <a class="nav-link" routerLink="generate-url" routerLinkActive="active">Generate URL</a>
+        </li>
+        <li class="nav-item px-2" *ngIf="authService.isLoggedIn">
+          <a class="nav-link" routerLink="" (click)="authService.logout()">Logout</a>
         </li>
       </ul>
     </div>
