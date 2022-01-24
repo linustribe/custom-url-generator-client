@@ -1,0 +1,12 @@
+@import '../../../../styles.scss';
+#main{
+    background-color:whitesmoke;
+    position: fixed;
+    bottom:0;
+    padding:10px;
+    width:100%;
+}
+
+h5,i{
+    color: $primary-color;
+}
