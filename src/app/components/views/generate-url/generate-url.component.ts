@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Link } from 'src/app/models/link.model';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-generate-url',
@@ -7,19 +8,12 @@ import { Link } from 'src/app/models/link.model';
   styleUrls: ['./generate-url.component.scss']
 })
 export class GenerateUrlComponent implements OnInit {
-
   linkdata : Link = {
     redirectTo : "https://angular.io/tutorial/toh-pt1",
     name : "temp",
     customurl : "",
     status : true,
   };
-
-  WillbeAdded(){
-    this.linkdata.name= (<HTMLInputElement>document.getElementById("ctag")).value;
-    this.linkdata.redirectTo = (<HTMLInputElement>document.getElementById("longurl")).value;
-    (<HTMLInputElement>document.getElementById("ctagadd")).innerHTML = this.linkdata.name; 
-  }
 
   constructor() { }
 
