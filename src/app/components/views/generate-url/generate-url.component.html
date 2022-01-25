@@ -1,1 +1,65 @@
-<p>generate-url works!</p>
+<div class="row m-3 p-1">
+    <h1 class="display-5 fw-bold text-center">Copy - paste url into the first box</h1>
+    <div class="col-xl-3 col-md-2 col-sm-1"></div>
+    <div class="col-xl-6 col-md-8 col-sm-10">
+        <form>
+          <div class="form-group my-3">
+            <label for="longurl">Enter Long Url</label>
+            <div class="input-group my-3">
+              <input
+                type="text"
+                class="form-control"
+                id="longurl"
+                aria-describedby="longurl"
+              />
+              <button class="btn btn-outline-primary" type="button" id="longurl">
+                Generate
+              </button>
+            </div>
+          </div>
+          <div
+            class="d-flex justify-content-between align-items-center mb-3 bg-light shadow-sm p-2"
+          >
+            <a href="#">https://cc.com</a>
+            <div class="text-secondary">
+              <i class="far fa-copy fs-5 mx-2"></i>
+              <span>Copy</span>
+            </div>
+          </div>
+          <div class="form-group my-3">
+            <label for="tag">Customize the url</label>
+            <p class="form-text text-muted mt-2">
+              <a href="#" class="">cc.com-turinghut</a> (turinghut is the custom
+              tag here...)
+            </p>
+            <div class="input-group my-3">
+              <input
+                type="text"
+                class="form-control"
+                id="tag"
+                placeholder="turinghut"
+                aria-describedby="button-tag"
+              />
+              <button
+                class="btn btn-outline-primary"
+                type="button"
+                id="button-tag"
+              >
+                <i class="fas fa-tag mx-2"></i> Add tag
+              </button>
+            </div>
+          </div>
+          <div
+            class="d-flex justify-content-between align-items-center mb-3 bg-light shadow-sm p-2"
+          >
+            <a href="#">https://cc.com-turinghut</a>
+            <div class="text-secondary">
+              <i class="far fa-copy fs-5 mx-2"></i>
+              <span>Copy</span>
+            </div>
+          </div>
+        </form>
+    </div>
+    <div class="col-xl-3 col-md-2 col-sm-1"></div>
+  </div>
+  
