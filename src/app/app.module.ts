@@ -1,16 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from "@angular/fire/compat/auth";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/views/home/home.component';
-import { LoginComponent } from './components/views/login/login.component';
-import { RegisterComponent } from './components/views/register/register.component';
-import { MyAccountComponent } from './components/views/my-account/my-account.component';
-import { GenerateUrlComponent } from './components/views/generate-url/generate-url.component';
-import { NavbarComponent } from './components/utils/navbar/navbar.component';
-import { FooterComponent } from './components/utils/footer/footer.component';
+import { FooterComponent, NavbarComponent, GenerateUrlComponent, MyAccountComponent, RegisterComponent, HomeComponent, LoginComponent } from './components';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -25,8 +22,10 @@ import { FooterComponent } from './components/utils/footer/footer.component';
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

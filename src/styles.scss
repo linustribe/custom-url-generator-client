@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* font family */
+$font-family: Arial, Helvetica, sans-serif;
+
+/* color */
+$primary-color: #505F98;
+$btn-primary-color: #4E60FF;
+
+/* font size */
+$font-size-normal: 18px;
+
+/* font weight */
+$font-weight-normal:          400 !default;
+$font-weight-bold:            500 !default;
+
+* {
+    font-family: $font-family;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.btn .btn-primary {
+    background: $btn-primary-color;
+}

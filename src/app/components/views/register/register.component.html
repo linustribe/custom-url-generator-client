@@ -1,1 +1,115 @@
-<p>register works!</p>
+<div class="row mt-3">
+  <div class="col-sm-1 col-md-2 col-xl-3"></div>
+  <div class="col-sm-10 col-md-8 col-xl-6">
+    <div class="fs-6">
+      <div class="text-center mb-4">
+        <h1 class="display-2 fw-bold mb-2">Register</h1>
+        <p>Regsiter with your email you are currently using</p>
+      </div>
+      <form [formGroup]="registerForm" (submit)="submitForm()" novalidate>
+        <div class="mb-4">
+          <label for="email" class="form-label">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            formControlName="email"
+            [ngClass]="{ 'is-invalid': email.errors && submitted }"
+          />
+          <div *ngIf="submitted && email.errors" class="text-danger">
+            <div *ngIf="email.errors.required">Email is required</div>
+            <div *ngIf="email.errors.email">Enter valid email</div>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <div class="d-flex justify-content-between align-items-center">
+            <label for="password" class="form-label">Password</label>
+            <span class="cursor-pointer" (click)="toggleShowPassword()">
+              <span *ngIf="!showPassword"
+                ><i class="far fa-eye px-1"></i> Show</span
+              >
+              <span *ngIf="showPassword"
+                ><i class="far fa-eye-slash px-1"></i> Hide</span
+              >
+            </span>
+          </div>
+          <input
+            [type]="passwordType"
+            class="form-control"
+            id="password"
+            autocomplete="off"
+            name="password"
+            formControlName="password"
+            [ngClass]="{ 'is-invalid': password.errors && submitted }"
+          />
+          <div *ngIf="submitted && password.errors" class="text-danger">
+            <div *ngIf="password.errors.required">Password is required</div>
+            <div *ngIf="!password.errors.required">
+              <div *ngIf="password.value.length < 8">
+                Password must have minimum 8 characters
+              </div>
+              <div *ngIf="password.value.length > 30">
+                Password must have maximum 30 characters
+              </div>
+              <div *ngIf="!passwordValidator.lower.exec(password.value)">
+                Password must have at least one lower case a-z character
+              </div>
+              <div *ngIf="!passwordValidator.upper.exec(password.value)">
+                Password must have at least one upper case A-Z character
+              </div>
+              <div *ngIf="!passwordValidator.digit.exec(password.value)">
+                Password must have at least one digit 0-9
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <div class="d-flex justify-content-between align-items-center">
+            <label for="confirmPassword" class="form-label"
+              >Confirm Password</label
+            >
+            <span class="cursor-pointer" (click)="toggleShowConfirmPassword()">
+              <span *ngIf="!showConfirmPassword"
+                ><i class="far fa-eye px-1"></i> Show</span
+              >
+              <span *ngIf="showConfirmPassword"
+                ><i class="far fa-eye-slash px-1"></i> Hide</span
+              >
+            </span>
+          </div>
+          <input
+            [type]="confirmPasswordType"
+            (input)="checkConfirmPassword()"
+            autocomplete="off"
+            class="form-control"
+            id="confirmPassword"
+            name="confirmPassword"
+            formControlName="confirmPassword"
+            [ngClass]="{ 'is-invalid': confirmPassword.errors && submitted }"
+          />
+          <div *ngIf="submitted" class="text-danger">
+            <div *ngIf="confirmPassword.errors">
+              <div *ngIf="confirmPassword.errors.required">
+                Confirm password is required
+              </div>
+            </div>
+            <div *ngIf="!confirmPassword.errors && !isValid">
+              Passwords are not matched
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <button type="submit" class="btn btn-primary w-100">Resgister</button>
+        </div>
+      </form>
+      <div class="text-center">
+        Already have an account? <a href="login">Login</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-1 col-md-2 col-xl-3"></div>
+</div>
